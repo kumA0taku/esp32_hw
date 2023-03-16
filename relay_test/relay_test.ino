@@ -5,6 +5,7 @@ SimpleDHT11 dht11(pinDHT11);
 void setup() {
   Serial.begin(9600);
   pinMode(26, OUTPUT); //กำหนดขา 26 เป็นขาออกที่เชื่อมต่อ LED
+  digitalWrite(26, LOW); //ปิดไฟ Relay
 }
 
 void loop() {
@@ -26,9 +27,9 @@ void loop() {
     */
     
   //int value = analogRead(34);
-  if (humidity > 75) { 
+  if (humidity <= 60) { 
     digitalWrite(26, HIGH); //เปิดไฟ Relay
-  } else {
+  } else if(humidity >= 75) {
     digitalWrite(26, LOW); //ปิดไฟ Relay
     }
 
